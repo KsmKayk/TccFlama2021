@@ -22,8 +22,7 @@ class User extends \TCG\Voyager\Models\User
         'email',
         'password',
         'gender',
-        'phone',
-        'address_id'
+        'phone'
     ];
 
     /**
@@ -44,4 +43,9 @@ class User extends \TCG\Voyager\Models\User
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function userAddress()
+    {
+        return $this->hasOne(UserAddress::class);
+    }
 }

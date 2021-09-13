@@ -18,7 +18,7 @@ class CreateOrders extends Migration
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE')->onUpdate('CASCADE');
             $table->bigInteger('status_id')->unsigned()->nullable();
-            $table->foreign('status_id')->references('id')->on('status')->onDelete('SET NULL')->onUpdate('CASCADE');
+            $table->foreign('status_id')->references('id')->on('statuses')->onDelete('SET NULL')->onUpdate('CASCADE');
         });
     }
 

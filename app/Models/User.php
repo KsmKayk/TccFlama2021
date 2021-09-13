@@ -48,4 +48,8 @@ class User extends \TCG\Voyager\Models\User
     {
         return $this->hasOne(UserAddress::class);
     }
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
 }

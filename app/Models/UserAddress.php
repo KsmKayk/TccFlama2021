@@ -19,8 +19,8 @@ class UserAddress extends Model
         'house_number'
     ];
 
-    public function user()
+    public function UserClient()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(UserClient::class);
     }
 }

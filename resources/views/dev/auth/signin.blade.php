@@ -1,6 +1,7 @@
 @extends('dev/head')
 
 @section('content')
+@include('error', ['errors' => $errors])
 <div class="d-flex flex-column align-items-center justify-content-center">
     <h1 class="fw-bold">Área de Login</h1>
     <div class="">

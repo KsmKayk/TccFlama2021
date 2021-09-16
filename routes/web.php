@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AuthController;
+use App\Http\Middleware\Authenticate;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,11 +18,19 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dev/welcome');
-});
-Route::get('/signin', function () {
-    return view('dev/auth/login');
+})->name('home');
+Route::get('/signin', [AuthController::class, 'showSignin']);
+Route::post('/signin', [AuthController::class, 'signin']);
+
+Route::get('/signup', [AuthController::class, 'showSignup']);
+Route::post('/signup', [AuthController::class, 'signup']);
+
+Route::get('/signout', function () {
+    Auth::logout();
+    return redirect()->route('home');
 });
 
-Route::get('/signup', function () {
-    return view('dev/auth/register');
-});
+Route::get('/protected', function () {
+    $user = auth()->user();
+    return view('dev/protected', compact('user'));
+})->name('home_protected')->middleware('auth');

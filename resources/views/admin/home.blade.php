@@ -9,7 +9,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>a</h3>
 
                 <p>Pedidos no mês</p>
               </div>
@@ -22,7 +22,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>a</h3>
 
                 <p>Usuários Cadastrados</p>
               </div>
@@ -43,7 +43,7 @@
                 <div class="card-body">
                   <div class="d-flex">
                     <p class="d-flex flex-column">
-                      <span class="text-bold text-lg">R$18.230,00</span>
+                      <span class="text-bold text-lg"></span>
                       <span>Vendas durante o ano</span>
                     </p>
                   </div>

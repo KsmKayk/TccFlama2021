@@ -51,11 +51,7 @@ Route::get('/protected', function () {
 
 //admin routes
 
-Route::get('/admin', function () {
-
-    return view('admin/home');
-})->middleware(['auth', 'adminAuth']);
-
+Route::get('/admin', [AdministratorsController::class, 'showDashboard'])->middleware(['auth', 'adminAuth']);
 Route::get('/admin/administrators', [AdministratorsController::class, 'index'])->middleware(['auth', 'adminAuth']);
 Route::get('/admin/categories', [CategoriesController::class, 'index'])->middleware(['auth', 'adminAuth']);
 Route::get('/admin/orders', [OrdersController::class, 'index'])->middleware(['auth', 'adminAuth']);

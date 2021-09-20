@@ -32,7 +32,7 @@ class AuthController extends Controller
     public function signup(Request $request, UserCreator $userCreator)
     {
         $data = $request->except('_token');
-        $user = $userCreator->create($data);
+        $userCreator->create($data);
 
         return redirect()->route('home_protected');
     }

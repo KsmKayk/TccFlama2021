@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Middleware\Authenticate;
+use App\Models\Administrator;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -34,3 +35,8 @@ Route::get('/protected', function () {
     $user = auth()->user();
     return view('dev/protected', compact('user'));
 })->name('home_protected')->middleware('auth');
+
+Route::get('/admin', function () {
+
+    return view('admin/home');
+})->middleware(['auth', 'adminAuth']);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Administrator;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Order;
@@ -10,7 +11,8 @@ class AdministratorsController extends Controller
 {
     public function index(Request $request)
     {
-        return view('admin.administrators.index');
+        $admnistrators = Administrator::all();
+        return view('admin.administrators.index', compact('admnistrators'));
     }
 
     public function showDashboard(Request $request)

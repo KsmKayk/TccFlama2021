@@ -18,4 +18,8 @@ class Order extends Model
     {
         return $this->hasOne(Status::class);
     }
+    public function OrderItems()
+    {
+        return $this->hasMany(OrderItem::class);
+    }
 }

@@ -9,7 +9,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>a</h3>
+                <h3>{{$ordersOnThisMonth->count()}}</h3>
 
                 <p>Pedidos no mês</p>
               </div>
@@ -22,7 +22,7 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>a</h3>
+                <h3>{{$users->count()}}</h3>
 
                 <p>Usuários Cadastrados</p>
               </div>
@@ -44,7 +44,7 @@
                   <div class="d-flex">
                     <p class="d-flex flex-column">
                       <span class="text-bold text-lg"></span>
-                      <span>Vendas durante o ano</span>
+                      <span>R${{$moneyEarnedOnThisYear}} valor recebido no ano</span>
                     </p>
                   </div>
                   <!-- /.d-flex -->
@@ -64,29 +64,57 @@
 @section('js')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
 <script>
+
+
     var ctx = document.getElementById('sales-chart').getContext('2d');
+
+
     var myChart = new Chart(ctx, {
         type: 'bar',
         data: {
             labels: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
             datasets: [{
                 label: 'Vendas',
-                data: [12, 19, 3, 5, 2, 3, 20, 3, 12, 5, 2, 3],
+                data: [
+                    {{$MoneyEarnedOnEachMonth[0]}},
+                    {{$MoneyEarnedOnEachMonth[1]}},
+                    {{$MoneyEarnedOnEachMonth[2]}},
+                    {{$MoneyEarnedOnEachMonth[3]}},
+                    {{$MoneyEarnedOnEachMonth[4]}},
+                    {{$MoneyEarnedOnEachMonth[5]}},
+                    {{$MoneyEarnedOnEachMonth[6]}},
+                    {{$MoneyEarnedOnEachMonth[7]}},
+                    {{$MoneyEarnedOnEachMonth[8]}},
+                    {{$MoneyEarnedOnEachMonth[9]}},
+                    {{$MoneyEarnedOnEachMonth[10]}},
+                    {{$MoneyEarnedOnEachMonth[11]}}],
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)'
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
+                    'rgba(237,240,242,0.6)',
+                    'rgba(70, 79, 102, 0.6)',
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)'
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
+                    'rgba(237,240,242,1)',
+                    'rgba(70, 79, 102, 1)',
                 ],
                 borderWidth: 1
             }]

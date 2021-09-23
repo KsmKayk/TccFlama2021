@@ -258,22 +258,6 @@ return [
             'url'         => 'admin/orders',
             'icon'        => 'fas fa-dolly-flatbed',
         ],
-        ['header' => 'Cores'],
-        [
-            'text'       => 'Importante',
-            'icon_color' => 'red',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Atenção',
-            'icon_color' => 'yellow',
-            'url'        => '#',
-        ],
-        [
-            'text'       => 'Informação',
-            'icon_color' => 'cyan',
-            'url'        => '#',
-        ],
         ['header' => ''],
         [
             'text' => 'Voltar ao site',

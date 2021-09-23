@@ -1,105 +1,79 @@
 @extends('adminlte::page')
 
-@section('title', 'GeekAdmin | Pedidos')
+@section('title', 'GeekAdmin | Categorias')
+
+@php
+
+$config = [
+    'columns' => [['orderable' => false], ['orderable' => false], ['orderable' => false]],
+    'language' => ['url' => '//cdn.datatables.net/plug-ins/1.11.2/i18n/pt_br.json'],
+    "targets"=> 'no-sort',
+    "bSort"=> false,
+
+];
+@endphp
+
 
 @section('content')
-    <div class="row mt-3 justify-content-end">
-        <div class="col-2 "><a href="/admin/administrators/new"type="button" class="btn btn-block btn-outline-success">Adicionar novo</a></div>
+@section('plugins.Datatables', true)
+@section('plugins.DatatablesPlugin', true)
 
-    </div>
-    <div class="row mt-2">
-        <div class="col-12">
-          <div class="card">
-            <div class="card-header">
-              <h3 class="card-title">Pedidos</h3>
 
-              <div class="card-tools">
-                <div class="input-group input-group-sm" style="width: 150px;">
-                  <input type="text" name="table_search" class="form-control float-right" placeholder="Search">
-
-                  <div class="input-group-append">
-                    <button type="submit" class="btn btn-default">
-                      <i class="fas fa-search"></i>
-                    </button>
-                  </div>
-                </div>
-              </div>
+<div class="col-12 mt-3">
+    <div class="card">
+        <div class="card-body">
+            <h3>Categorias</h3>
+            <div class="table-responsive">
+                <table id="table1"  style="width:100%" class="table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOME</th>
+                            <th>AÇÕES</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($categories as $category)
+                        <tr>
+                            <td>{{$category->id}}</td>
+                            <td>{{$category->name}}</td>
+                            <td class="d-flex justify-content-center mt-1 mb-1">
+                                <a href="/admin/categories/{{$category->id}}/edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                <form method="POST"action="/admin/categories/{{$category->id}}/delete" onsubmit="return confirm ('Tem certeza que deseja remover o adm: {{ addslashes($adm->user->email) }}?')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-outline-danger ml-2 mr-2"><i class="far fa-trash-alt"></i></button>
+                                </form>
+                                <a href="/admin/categories/{{$category->id}}" class="btn btn-outline-warning"><i class="fas fa-eye"></i></a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
-            <!-- /.card-header -->
-            <div class="card-body table-responsive p-0" style="height: 600px;">
-              <table class="table table-head-fixed text-nowrap">
-                <thead>
-                  <tr>
-                    <th>ID</th>
-                    <th>User</th>
-                    <th>Date</th>
-                    <th>Status</th>
-                    <th>Reason</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>183</td>
-                    <td>John Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>219</td>
-                    <td>Alexander Pierce</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>657</td>
-                    <td>Bob Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>175</td>
-                    <td>Mike Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>134</td>
-                    <td>Jim Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-success">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>494</td>
-                    <td>Victoria Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-warning">Pending</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>832</td>
-                    <td>Michael Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-primary">Approved</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                  <tr>
-                    <td>982</td>
-                    <td>Rocky Doe</td>
-                    <td>11-7-2014</td>
-                    <td><span class="tag tag-danger">Denied</span></td>
-                    <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-            <!-- /.card-body -->
-          </div>
-          <!-- /.card -->
-
+        </div>
     </div>
-@stop
+</div>
+
+@endsection
+
+@section('js')
+<script>
+
+
+        var table = $('#table1').DataTable( @json($config) );
+        table.order().listener('#table1 th:eq(0)', 0);
+
+
+</script>
+@endsection
+
+@section('css')
+<style type="text/css">
+    #table1 tr td,  #table1 tr th {
+        vertical-align: middle;
+        text-align: center;
+    }
+</style>
+@endsection
+

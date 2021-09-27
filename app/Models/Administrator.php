@@ -9,6 +9,9 @@ class Administrator extends Model
 {
     use HasFactory;
     public $timestamps = false;
+    protected $fillable = [
+        'user_id',
+    ];
 
     public function user()
     {

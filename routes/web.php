@@ -52,7 +52,24 @@ Route::get('/protected', function () {
 //admin routes
 
 Route::get('/admin', [AdministratorsController::class, 'showDashboard'])->middleware(['auth', 'adminAuth']);
+
 Route::get('/admin/administrators', [AdministratorsController::class, 'index'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/administrators/{id}/edit', [AdministratorsController::class, 'showEditAdm'])->middleware(['auth', 'adminAuth']);
+Route::put('/admin/administrators/{id}/edit', [AdministratorsController::class, 'editAdm'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/administrators/new', [AdministratorsController::class, 'showNewAdm'])->middleware(['auth', 'adminAuth']);
+Route::post('/admin/administrators/new', [AdministratorsController::class, 'addNewAdm'])->middleware(['auth', 'adminAuth']);
+Route::delete('/admin/administrators/{id}/delete', [AdministratorsController::class, 'delAdm'])->middleware(['auth', 'adminAuth']);
+
 Route::get('/admin/categories', [CategoriesController::class, 'index'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/categories/{id}/edit', [CategoriesController::class, 'showEditCategory'])->middleware(['auth', 'adminAuth']);
+Route::put('/admin/categories/{id}/edit', [CategoriesController::class, 'editCategory'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/categories/new', [CategoriesController::class, 'showNewCategory'])->middleware(['auth', 'adminAuth']);
+Route::post('/admin/categories/new', [CategoriesController::class, 'addNewCategory'])->middleware(['auth', 'adminAuth']);
+Route::delete('/admin/categories/{id}/delete', [CategoriesController::class, 'delCategory'])->middleware(['auth', 'adminAuth']);
+
 Route::get('/admin/orders', [OrdersController::class, 'index'])->middleware(['auth', 'adminAuth']);
+
 Route::get('/admin/products', [ProductsController::class, 'index'])->middleware(['auth', 'adminAuth']);
+
+Route::get('/admin/products/new', [ProductsController::class, 'showNewProduct'])->middleware(['auth', 'adminAuth']);
+Route::post('/admin/products/new', [ProductsController::class, 'addNewProduct'])->middleware(['auth', 'adminAuth']);

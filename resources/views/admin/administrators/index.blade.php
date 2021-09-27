@@ -24,7 +24,7 @@ $config = [
         <div class="card-body">
             <div class="d-flex justify-content-between mb-2">
                 <h3>Administradores</h3>
-                <a href="/admin/administratores/new" class="btn btn-outline-success">Adicionar</a>
+                <a href="/admin/administrators/new" class="btn btn-outline-success">Adicionar</a>
 
             </div>
 
@@ -51,7 +51,7 @@ $config = [
                                     @method('DELETE')
                                     <button class="btn btn-outline-danger ml-2 mr-2"><i class="far fa-trash-alt"></i></button>
                                 </form>
-                                <a href="/admin/administrators/{{$adm->id}}" class="btn btn-outline-warning"><i class="fas fa-eye"></i></a>
+                                {{-- <a href="/admin/administrators/{{$adm->id}}" class="btn btn-outline-warning"><i class="fas fa-eye"></i></a> --}}
                             </td>
                         </tr>
                         @endforeach

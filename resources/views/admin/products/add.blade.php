@@ -7,21 +7,24 @@
 
 
 <div class="col-12 mt-3 bg-dark">
-    <form method="POST">
+    <form method="POST" enctype="multipart/form-data">
         @csrf
         <h2 class="h3 ml-1 pt-2">Adicionar Produto</h2>
         <div class="form-group mb-3">
             <label for="name">Nome</label>
             <input type="text" class="form-control" id="name" name="name">
           </div>
-          <div class="form-group mb-4">
-            <label for="price">Price</label>
-            <input type="price" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="price" name="price" />
+          <div class="form-group mb-3">
+            <label for="price">Preço</label>
+            <input type="number" min="0" step="0.01" data-number-to-fixed="2" data-number-stepfactor="100" class="form-control currency" id="price" name="price" />
         </div>
 
-        <div class="custom-file mb-3">
-            <input type="file" class="custom-file-input form-control" id="image" name="image">
-            <label class="custom-file-label" for="image">Escolha uma imagem</label>
+        <label for="image">Imagem do produto</label>
+        <div class="input-group mb-3">
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="image" name="image" >
+              <label class="custom-file-label" for="image">Escolher arquivo</label>
+            </div>
           </div>
 
           <div class="form-group mb-3">
@@ -38,5 +41,11 @@
 </div>
 
 @endsection
+
+
+
+
+
+
 
 

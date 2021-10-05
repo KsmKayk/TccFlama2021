@@ -5,7 +5,7 @@
 @php
 
 $config = [
-    'columns' => [['orderable' => false], ['orderable' => false], ['orderable' => false], ['orderable' => false], ['orderable' => false], ['orderable' => false]],
+    'columns' => [['orderable' => false], ['orderable' => false], ['orderable' => false],['orderable' => false], ['orderable' => false], ['orderable' => false], ['orderable' => false]],
     'language' => ['url' => '//cdn.datatables.net/plug-ins/1.11.2/i18n/pt_br.json'],
     "targets"=> 'no-sort',
     "bSort"=> false,
@@ -36,6 +36,7 @@ $config = [
                             <th>NOME</th>
                             <th>PREÇO</th>
                             <th>IMAGEM</th>
+                            <th>CATEGORIA</th>
                             <th>DESCRIÇÃO</th>
                             <th>AÇÕES</th>
                         </tr>
@@ -47,6 +48,7 @@ $config = [
                             <td>{{$product->name}}</td>
                             <td >R${{$product->price}}</td>
                             <td ><img src={{$product->image_url}} alt={{$product->name}} id="img_product" ></td>
+                            <td>{{$product->category->name}}</td>
                             <td >{{$product->description}}</td>
                             <td class="d-flex justify-content-center mt-5">
                                 <a href="/admin/products/{{$product->id}}/edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>

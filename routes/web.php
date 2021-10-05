@@ -67,9 +67,16 @@ Route::get('/admin/categories/new', [CategoriesController::class, 'showNewCatego
 Route::post('/admin/categories/new', [CategoriesController::class, 'addNewCategory'])->middleware(['auth', 'adminAuth']);
 Route::delete('/admin/categories/{id}/delete', [CategoriesController::class, 'delCategory'])->middleware(['auth', 'adminAuth']);
 
-Route::get('/admin/orders', [OrdersController::class, 'index'])->middleware(['auth', 'adminAuth']);
 
 Route::get('/admin/products', [ProductsController::class, 'index'])->middleware(['auth', 'adminAuth']);
-
 Route::get('/admin/products/new', [ProductsController::class, 'showNewProduct'])->middleware(['auth', 'adminAuth']);
 Route::post('/admin/products/new', [ProductsController::class, 'addNewProduct'])->middleware(['auth', 'adminAuth']);
+Route::delete('/admin/products/{id}/delete', [ProductsController::class, 'removeProduct'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/products/{id}/edit', [ProductsController::class, 'showEditProduct'])->middleware(['auth', 'adminAuth']);
+Route::put('/admin/products/{id}/edit', [ProductsController::class, 'editProduct'])->middleware(['auth', 'adminAuth']);
+
+
+Route::get('/admin/orders', [OrdersController::class, 'index'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/orders/{id}/show', [OrdersController::class, 'showOrder'])->middleware(['auth', 'adminAuth']);
+Route::get('/admin/orders/{id}/edit', [OrdersController::class, 'showEditOrder'])->middleware(['auth', 'adminAuth']);
+Route::put('/admin/orders/{id}/edit', [OrdersController::class, 'editOrder'])->middleware(['auth', 'adminAuth']);

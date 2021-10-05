@@ -5,7 +5,7 @@
 @php
 
 $config = [
-    'columns' => [['orderable' => false], ['orderable' => false], ['orderable' => false]],
+    'columns' => [['orderable' => false], ['orderable' => false], ['orderable' => false],['orderable' => false],['orderable' => false]],
     'language' => ['url' => '//cdn.datatables.net/plug-ins/1.11.2/i18n/pt_br.json'],
     "targets"=> 'no-sort',
     "bSort"=> false,
@@ -22,30 +22,27 @@ $config = [
 <div class="col-12 mt-3">
     <div class="card">
         <div class="card-body">
-            <h3>Categorias</h3>
+            <div class="d-flex justify-content-between mb-2">
+                <h3>Pedidos</h3>
+            </div>
+
             <div class="table-responsive">
                 <table id="table1"  style="width:100%" class="table-hover table-striped">
                     <thead>
                         <tr>
                             <th>ID</th>
-                            <th>NOME</th>
+                            <th>USUÁRIO</th>
+                            <th>ESTADO</th>
+                            <th>PRODUTOS</th>
                             <th>AÇÕES</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($categories as $category)
+                        @foreach($orders as $order)
                         <tr>
-                            <td>{{$category->id}}</td>
-                            <td>{{$category->name}}</td>
-                            <td class="d-flex justify-content-center mt-1 mb-1">
-                                <a href="/admin/categories/{{$category->id}}/edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
-                                <form method="POST"action="/admin/categories/{{$category->id}}/delete" onsubmit="return confirm ('Tem certeza que deseja remover o adm: {{ addslashes($adm->user->email) }}?')">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button class="btn btn-outline-danger ml-2 mr-2"><i class="far fa-trash-alt"></i></button>
-                                </form>
-                                <a href="/admin/categories/{{$category->id}}" class="btn btn-outline-warning"><i class="fas fa-eye"></i></a>
-                            </td>
+                            <td>{{$order->id}}</td>
+                            <td>{{$order->user->email}}</td>
+                            <td></td>
                         </tr>
                         @endforeach
                     </tbody>

@@ -14,12 +14,12 @@ class Order extends Model
     {
         return $this->belongsTo(User::class);
     }
-    public function status()
-    {
-        return $this->hasOne(Status::class);
-    }
     public function OrderItems()
     {
         return $this->hasMany(OrderItem::class);
+    }
+    public function OrderStatus()
+    {
+        return $this->belongsTo(Order_status::class);
     }
 }

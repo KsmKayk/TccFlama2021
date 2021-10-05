@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -15,7 +16,8 @@ class ProductsController extends Controller
     }
     public function showNewProduct(Request $request)
     {
-        return view('admin.products.add');
+        $categories = Category::all();
+        return view('admin.products.add', compact('categories'));
     }
     public function addNewProduct(Request $request)
     {
@@ -26,6 +28,7 @@ class ProductsController extends Controller
             'description' => $request->description,
             'image_url' => "https://tccflama2021.s3.us-east-2.amazonaws.com/" . $path,
             'price' => strval($request->price),
+            'category_id' => $request->category_id,
 
         ]);
 
@@ -46,7 +49,8 @@ class ProductsController extends Controller
     {
         $id = $request->id;
         $product = Product::find($id);
-        return view('admin.products.edit', compact('product'));
+        $categories = Category::all();
+        return view('admin.products.edit', compact('product', 'categories'));
     }
     public function editProduct(Request $request)
     {
@@ -55,6 +59,7 @@ class ProductsController extends Controller
         $product->name = $request->name;
         $product->description = $request->description;
         $product->price = strval($request->price);
+        $product->category_id = $request->category_id;
         if ($request->hasFile('image')) {
             $product_url = $product->image_url;
             $product_url = explode(".com/", $product_url);

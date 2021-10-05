@@ -28,6 +28,15 @@
           </div>
 
           <div class="form-group mb-3">
+            <label for="category_id">Selecione uma categoria</label>
+            <select class="form-control" id="category_id" name="category_id">
+              @foreach ($categories as $category)
+                <option value={{$category->id}}>{{$category->name}}</option>
+              @endforeach
+            </select>
+          </div>
+
+          <div class="form-group mb-3">
             <label for="description">Descrição</label>
             <input type="text" class="form-control" id="description" name="description">
           </div>

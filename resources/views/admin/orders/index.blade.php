@@ -42,7 +42,22 @@ $config = [
                         <tr>
                             <td>{{$order->id}}</td>
                             <td>{{$order->user->email}}</td>
-                            <td></td>
+                            <td>{{$order->OrderStatus->name}}</td>
+                            <td>
+                                @if ($order->OrderItems->count() > 5)
+                                    @foreach ($order->OrderItems->take(5) as $item)
+                                    {{$item->name}}:{{$item->quantity}}
+                                    @endforeach
+
+                                @else
+                                    @foreach ($order->OrderItems as $item)
+                                    {{$item->product->name}} : {{$item->quantity}}<br/>
+                                    @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                <a href="/admin/orders/{{$order->id}}/edit" class="btn btn-outline-primary"><i class="far fa-edit"></i></a>
+                                 <a href="/admin/orders/{{$order->id}}/show" class="btn btn-outline-warning ml-1 mr-1"><i class="fas fa-eye"></i></a>
                         </tr>
                         @endforeach
                     </tbody>

@@ -21,6 +21,7 @@ class ProductsController extends Controller
     }
     public function addNewProduct(Request $request)
     {
+
         $path = $request->file('image')->store('products_images', 's3');
 
         Product::create([

@@ -10,7 +10,7 @@ class AuthController extends Controller
 {
     public function showSignin()
     {
-        return view('dev.auth.signin');
+        return view('auth.signin');
     }
 
     public function signin(Request $request)
@@ -26,7 +26,7 @@ class AuthController extends Controller
 
     public function showSignup()
     {
-        return view('dev.auth.signup');
+        return view('auth.signup');
     }
 
     public function signup(Request $request, UserCreator $userCreator)

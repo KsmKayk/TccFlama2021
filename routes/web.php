@@ -5,6 +5,7 @@ use App\Http\Controllers\ProductsController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PagesController;
 use App\Http\Middleware\Authenticate;
 use App\Models\Administrator;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +22,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dev/welcome');
-})->name('home');
+Route::get('/', [PagesController::class, 'home'])->name('home');
 
 //auth routes
 Route::get('/signin', [AuthController::class, 'showSignin']);

@@ -13,5 +13,5 @@ module.exports = {
         extend: {},
         outline: ["focus"],
     },
-    plugins: [require("@tailwindcss/forms")],
+    plugins: [require('@tailwindcss/forms')],
 };

@@ -1,4 +1,4 @@
-@extends('layouts/base')
+@extends('layouts/base3')
 @section('title')
     PersonalizeGeek | Signup
 @endsection

@@ -23,6 +23,11 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
+Route::get('/shirts', [PagesController::class, 'shirts']);
+Route::get('/product/{id}', [PagesController::class, 'product']);
+Route::get('/cart', [PagesController::class, 'cart']);
+Route::get('/cart/addProduct', [PagesController::class, 'addProduct']);
+Route::post('/search', [PagesController::class, 'search']);
 
 //auth routes
 Route::get('/signin', [AuthController::class, 'showSignin']);
@@ -39,13 +44,6 @@ Route::get('/signout', function () {
     Auth::logout();
     return redirect()->route('home');
 });
-
-//tests
-
-Route::get('/protected', function () {
-    $user = auth()->user();
-    return view('dev/protected', compact('user'));
-})->name('home_protected')->middleware('auth');
 
 
 //admin routes

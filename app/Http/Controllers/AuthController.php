@@ -21,7 +21,7 @@ class AuthController extends Controller
             ]);
         }
 
-        return redirect()->route('home_protected');
+        return redirect()->route('home');
     }
 
     public function showSignup()
@@ -34,6 +34,6 @@ class AuthController extends Controller
         $data = $request->except('_token');
         $userCreator->create($data);
 
-        return redirect()->route('home_protected');
+        return redirect()->route('home');
     }
 }

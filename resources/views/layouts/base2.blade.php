@@ -54,6 +54,7 @@
 
         @yield('content')
 
+       <div class="relative mt-auto">
         <div class="w-full flex flex-row  justify-between items-center mt-5 rounded-t-xl" style="background-color: #1F2229 ">
             <div class="flex flex-col ml-5">
                 <a href="http://localhost/about" class="font-main text-lg font-light text-white">Sobre Nós</a>
@@ -66,6 +67,7 @@
             </div>
             <img src="https://tccflama2021.s3.us-east-2.amazonaws.com/products_images/nomeComLogo.png" alt="" class="w-44  mr-5">
         </div>
+       </div>
     </div>
 </body>
 </html>

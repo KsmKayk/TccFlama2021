@@ -12,7 +12,7 @@
     <title>@yield('title')</title>
 </head>
 <body>
-    <div class="w-full h-screen overflow-x-hidden flex flex-col justify-between">
+    <div class="w-full overflow-x-hidden flex flex-col"  style="height: calc(100vh - 176px)">
         <div class="flex flex-col w-full h-24 md:h-36 rounded-b-md" style="background-color: #1F2229 ">
             <div class="flex flex-row justify-between items-center w-full mt-5">
                 <a href="http://localhost/"><img src="https://tccflama2021.s3.us-east-2.amazonaws.com/products_images/nomeSemLogo.png" alt="nome" class="ml-10 w-36"></a>
@@ -39,18 +39,19 @@
 
         @yield('content')
 
-        <div class="w-full flex flex-row  justify-between items-center mt-5 rounded-t-xl" style="background-color: #1F2229 ">
-            <div class="flex flex-col ml-5">
-                <a href="http://localhost/about" class="font-main text-lg font-light text-white">Sobre Nós</a>
-                <a href="http://localhost/privacity" class="font-main text-lg font-light text-white">Politica de privacidade</a>
-                <a href="http://localhost/return" class="font-main text-lg font-light text-white">Trocas e Devoluções</a>
-            </div>
-            <div class="d-flex">
-                <h2 class="font-main text-lg font-light text-white opacity-50">contato@personalizegee.com</h2>
-                <h3 class="font-main text-lg font-light text-white opacity-80">CC Copyright | PersonalizeGeek</h3>
-            </div>
-            <img src="https://tccflama2021.s3.us-east-2.amazonaws.com/products_images/nomeComLogo.png" alt="" class="w-44  mr-5">
+
+    </div>
+    <div class="w-full flex flex-row place-self-end justify-between items-center mt-5 rounded-t-xl" style="background-color: #1F2229 ">
+        <div class="flex flex-col ml-5">
+            <a href="http://localhost/about" class="font-main text-lg font-light text-white">Sobre Nós</a>
+            <a href="http://localhost/privacity" class="font-main text-lg font-light text-white">Politica de privacidade</a>
+            <a href="http://localhost/return" class="font-main text-lg font-light text-white">Trocas e Devoluções</a>
         </div>
+        <div class="d-flex">
+            <h2 class="font-main text-lg font-light text-white opacity-50">contato@personalizegee.com</h2>
+            <h3 class="font-main text-lg font-light text-white opacity-80">CC Copyright | PersonalizeGeek</h3>
+        </div>
+        <img src="https://tccflama2021.s3.us-east-2.amazonaws.com/products_images/nomeComLogo.png" alt="" class="w-44  mr-5">
     </div>
 </body>
 </html>

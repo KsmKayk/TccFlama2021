@@ -6,6 +6,7 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\CartController;
 use App\Http\Middleware\Authenticate;
 use App\Models\Administrator;
 use Illuminate\Support\Facades\Auth;
@@ -22,15 +23,36 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//pages routes
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/shirts', [PagesController::class, 'shirts']);
+Route::get('/hoodies', [PagesController::class, 'hoodies']);
+Route::get('/mugs', [PagesController::class, 'mugs']);
+Route::get('/accessories', [PagesController::class, 'accessories']);
 Route::get('/product/{id}', [PagesController::class, 'product']);
-Route::get('/cart', [PagesController::class, 'cart']);
-Route::get('/cart/addProduct', [PagesController::class, 'addProduct']);
 Route::post('/search', [PagesController::class, 'search']);
 
+//text routes
+Route::get('/about', function () {
+    return view('texts/about');
+});
+Route::get('/privacity', function () {
+    return view('texts/privacity');
+});
+Route::get('/return', function () {
+    return view('texts/return');
+});
+
+
+
+//cart routes
+Route::get('/cart', [CartController::class, 'cart'])->name('cart');
+Route::post('/cart/addProduct', [CartController::class, 'addProduct']);
+Route::get('/cart/removeProduct/{product}', [CartController::class, 'removeProduct']);
+
+
 //auth routes
-Route::get('/signin', [AuthController::class, 'showSignin']);
+Route::get('/signin', [AuthController::class, 'showSignin'])->name('signin');
 Route::post('/signin', [AuthController::class, 'signin']);
 
 Route::get('/signup', [AuthController::class, 'showSignup']);

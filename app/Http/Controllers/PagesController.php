@@ -24,6 +24,24 @@ class PagesController extends Controller
         $products = Product::where('category_id', $category->id)->get();
         return view('client.shirts', compact('products'));
     }
+    public function hoodies(Request $request)
+    {
+        $category = Category::where('name', 'MOLETONS')->first();
+        $products = Product::where('category_id', $category->id)->get();
+        return view('client.hoodies', compact('products'));
+    }
+    public function accessories(Request $request)
+    {
+        $category = Category::where('name', 'ACESSORIOS')->first();
+        $products = Product::where('category_id', $category->id)->get();
+        return view('client.accessories', compact('products'));
+    }
+    public function mugs(Request $request)
+    {
+        $category = Category::where('name', 'CANECAS')->first();
+        $products = Product::where('category_id', $category->id)->get();
+        return view('client.mugs', compact('products'));
+    }
 
     public function product($id,Request $request)
     {
@@ -31,10 +49,6 @@ class PagesController extends Controller
         return view('client.product', compact('product'));
     }
 
-    public function cart(Request $request)
-    {
-        return view('client.cart');
-    }
 
     public function search(Request $request)
     {

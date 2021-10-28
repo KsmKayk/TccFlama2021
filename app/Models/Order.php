@@ -9,6 +9,11 @@ class Order extends Model
 {
     use HasFactory;
     public $timestamps = true;
+    protected $fillable = [
+        'user_id',
+        'status_id',
+        'paypal_token'
+    ];
 
     public function user()
     {

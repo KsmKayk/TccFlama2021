@@ -36,14 +36,9 @@
             </div>
             @endforeach
 
-            <div class="w-72 self-center">
-                <form action="">
-                    @csrf
-                    <button class="mt-5 w-72 items-center p-4 bg-gray-700 text-white hover:bg-gray-900 transition-colors rounded-3xl font-main">
-                        Comprar
-                    </button>
-                </form>
-            </div>
+                <a href="{{ route('make.payment') }}"  class="mt-10 self-center text-center w-72 p-4 bg-gray-700 text-white hover:bg-gray-900 transition-colors rounded-3xl font-main">
+                    Comprar
+                </a>
             @else
                 <h2 class="self-center font-light font-main mt-10 text-3xl">Você ainda não adicionou nada ao seu carrinho!</h2>
             @endif

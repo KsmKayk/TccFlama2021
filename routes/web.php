@@ -7,6 +7,7 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PagesController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\PayPalPaymentController;
 use App\Http\Middleware\Authenticate;
 use App\Models\Administrator;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +50,11 @@ Route::get('/return', function () {
 Route::get('/cart', [CartController::class, 'cart'])->name('cart');
 Route::post('/cart/addProduct', [CartController::class, 'addProduct']);
 Route::get('/cart/removeProduct/{product}', [CartController::class, 'removeProduct']);
+
+//paypal routes
+Route::get('handle-payment', [PayPalPaymentController::class, 'handlePayment'])->name('make.payment');
+Route::get('cancel-payment', [PayPalPaymentController::class, 'paymentCancel'])->name('cancel.payment');
+Route::get('payment-success', [PayPalPaymentController::class, 'paymentSuccess'])->name('success.payment');
 
 
 //auth routes

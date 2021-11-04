@@ -18,12 +18,11 @@
                             @include('layouts/input', ['placeholder' => 'Nome', 'name' => 'name', 'type' => 'text'])
                         </div>
                         <div>
-                            @include('layouts/input', ['placeholder' => 'Telefone/Celular', 'name' => 'phone', 'type' => 'text'])
+                            @include('layouts/input', ['placeholder' => 'Celular (ddd)', 'name' => 'phone', 'type' => 'text'])
                         </div>
                         <div class="flex flex-row">
                             @include('layouts/inputsm', ['placeholder' => 'Email', 'name' => 'email', 'type' => 'email'])
                             <select name="gender" id="gender" class="ml-2 w-40 h-10 mt-3.5 focus:ring-transparent focus:outline-none focus:border-gray-800">
-                                <option value="gender">Gênero</option>
                                 <option value="masculine">Masculino</option>
                                 <option value="feminine">Feminino</option>
                                 <option value="other">Outro</option>
@@ -31,7 +30,7 @@
                         </div>
                         <div>
                             @include('layouts/inputsm', ['placeholder' => 'Senha', 'name' => 'password', 'type' => 'password'])
-                            @include('layouts/inputsm', ['placeholder' => 'Confirmar Senha', 'name' => 'password', 'type' => 'password'])
+                            @include('layouts/inputsm', ['placeholder' => 'Confirmar Senha', 'name' => 'password_confirmation', 'type' => 'password'])
                         </div>
                     </div>
                     <div>
@@ -85,7 +84,7 @@
                     @include('layouts/input', ['placeholder' => 'Bairro', 'name' => 'neighborhood', 'type' => 'text'])
 
                     @include('layouts/input', ['placeholder' => 'Cidade', 'name' => 'city', 'type' => 'text'])
-                    @include('layouts/input', ['placeholder' => 'Estado', 'name' => 'state', 'type' => 'text'])
+                    @include('layouts/input', ['placeholder' => 'Estado (UF)', 'name' => 'state', 'type' => 'text'])
                 </div>
 
                 <div class="flex justify-center">

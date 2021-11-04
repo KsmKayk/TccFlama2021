@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Validator;
 
 class ProductsController extends Controller
 {
@@ -22,18 +23,29 @@ class ProductsController extends Controller
     public function addNewProduct(Request $request)
     {
 
-        $path = $request->file('image')->store('products_images', 's3');
-
-        Product::create([
-            'name' => $request->name,
-            'description' => $request->description,
-            'image_url' => "https://tccflama2021.s3.us-east-2.amazonaws.com/" . $path,
-            'price' => strval($request->price),
-            'category_id' => $request->category_id,
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|max:255',
+            'description' => 'required',
+            'price' => 'required|numeric',
+            'image' => 'required|image|mimes:jpeg,png,jpg',
         ]);
 
-        return redirect('admin/products');
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        } else {
+            $path = $request->file('image')->store('products_images', 's3');
+
+            Product::create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'image_url' => "https://tccflama2021.s3.us-east-2.amazonaws.com/" . $path,
+                'price' => strval($request->price),
+                'category_id' => $request->category_id,
+
+            ]);
+
+            return redirect('admin/products');
+        }
     }
 
     public function removeProduct(Request $request)

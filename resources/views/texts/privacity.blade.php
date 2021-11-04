@@ -4,7 +4,7 @@
 @endsection
 
 @section('content')
-<div class="flex flex-col w-screen items-center">
+<div class="flex flex-col w-screen h-screen items-center">
     <h1 class="mt-8 font-medium font-main text-3xl">Política de Privacidade Personalize Geek</h1>
     <form action="">
         <div class="flex flex-col justify-center items-center  w-screen mt-8">

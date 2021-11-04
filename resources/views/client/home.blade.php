@@ -7,6 +7,7 @@
     <div class="w-screen mt-10 flex flex-col items-center">
         <h1 class="text-4xl font-main font-bold">Lançamentos</h1>
         <div class="mt-10 ml-2 mr-2 flex flex-col md:flex-row md:justify-between md:w-full md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl">
+            @if ($releases->count() > 0)
             @foreach ($releases as $product)
             <a href="http://localhost/product/{{$product->id}}" class="w-80 border-2 border-gray-300 rounded-3xl flex flex-col mb-4">
                 <div class="w-72 self-center mt-3">
@@ -20,11 +21,15 @@
                 </div>
             </a>
             @endforeach
+            @else
+
+            @endif
         </div>
 
         <h1 class="text-4xl font-main font-bold mt-5">Promoções</h1>
 
         <div class="mt-10 ml-2 mr-2 flex flex-col md:flex-row md:justify-between md:w-full md:max-w-screen-md lg:max-w-screen-lg xl:max-w-screen-xl 2xl:max-w-screen-2xl">
+        @if ($products->count() >= 8)
         @for ($i = 0; $i < 4; $i++)
         <a href="http://localhost/product/{{$products[$i]->id}}" class="w-80 border-2 border-gray-300 rounded-3xl flex flex-col mb-4">
             <div class="w-72 self-center mt-3">
@@ -54,6 +59,9 @@
             </div>
         </a>
         @endfor
+        @else
+
+        @endif
         </div>
 
 

@@ -30,7 +30,7 @@ return [
     |
     */
 
-    'use_ico_only' => false,
+    'use_ico_only' => true,
     'use_full_favicon' => false,
 
     /*
@@ -46,7 +46,7 @@ return [
     */
 
     'logo' => '<b>Geek</b>Admin',
-    'logo_img' => 'storage/RoundLogo.png',
+    'logo_img' => 'https://tccflama2021.s3.us-east-2.amazonaws.com/products_images/icone.png',
     'logo_img_class' => 'brand-image',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -247,11 +247,6 @@ return [
             'text'        => 'Produtos',
             'url'         => 'admin/products',
             'icon'        => 'fas fa-shopping-bag',
-        ],
-        [
-            'text'        => 'Categorias',
-            'url'         => 'admin/categories',
-            'icon'        => 'fas fa-th-large',
         ],
         [
             'text'        => 'Pedidos',

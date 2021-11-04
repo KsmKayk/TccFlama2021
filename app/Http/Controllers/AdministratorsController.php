@@ -39,9 +39,13 @@ class AdministratorsController extends Controller
     }
     public function addNewAdm(Request $request)
     {
-        Administrator::create([
-            'user_id' => $request->user_id
-        ]);
+        $adm = Administrator::find($request->user_id);
+        if (!$adm) {
+            Administrator::create([
+                'user_id' => $request->user_id
+            ]);
+        }
+
         return redirect('admin/administrators');
     }
 
